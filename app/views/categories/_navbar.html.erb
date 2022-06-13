@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand ms-4" href="#">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Notepad-117597_640.png/563px-Notepad-117597_640.png"
+        alt=""
+        width="40"
+        height="30"
+        class="d-inline-block align-text-top"
+      />
+      List-Ta!</a
+    >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end ms-10" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <% if user_signed_in?%>
+          <li class="nav-item">
+            <%= link_to "Home", categories_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Profile
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><%= link_to "Edit profile", edit_user_registration_path, class: "dropdown-item" %></li>
+              <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
+            </ul>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
