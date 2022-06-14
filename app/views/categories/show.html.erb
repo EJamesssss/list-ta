@@ -1,14 +1,16 @@
-
-<p>
-  <strong>Category title:</strong>
-  <%= @category.category_title %>
-</p>
-
-<p>
-  <strong>Category details:</strong>
-  <%= @category.category_details %>
-</p>
-
-
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<div class="container ">
+  <div class="card text-center">
+    <div class="card-header">
+      Category
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"><%= @category.category_title %></h5>
+      <p class="card-text"><%= @category.category_details %></p>
+      <%= link_to ' Edit', edit_category_path(@category), class: "btn btn-info me-md-2 fa-regular fa-pen-to-square" %> |
+      <%= link_to ' Back', categories_path, class: "btn btn-secondary me-md-2 fa-solid fa-arrow-left" %>
+    </div>
+    <div class="card-footer text-muted">
+      <%= @category.created_at.to_time.strftime('%B %e %Y at %l:%M %p') %>
+    </div>
+  </div>
+</div>
