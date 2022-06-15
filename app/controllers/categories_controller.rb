@@ -1,12 +1,10 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_action :this_user, only: [:edit,:update,:destroy]
-  # , except: [:index,:show]
 
   # GET /categories
   def index
-    @categories = Category.all
+    @categories = current_user.categories
   end
 
   # GET /categories/1
@@ -50,19 +48,18 @@ class CategoriesController < ApplicationController
     redirect_to categories_url, notice: 'Category was successfully destroyed.'
   end
 
-  def this_user
-    @category = current_user.categories.find_by(id: params[:id])
-    redirect_to category_path, notice: "Unauthorized user!" if @category.nil?
-  end
+
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_category
-      @category = Category.find(params[:id])
-    end
 
+    def set_category
+      @category = current_user.categories.find_by(id: params[:id])
+      redirect_to category_path, notice: "Unauthorized user!" if @category.nil?
+    end
     # Only allow a list of trusted parameters through.
     def category_params
       params.require(:category).permit(:category_title, :category_details, :user_id)
     end
+
+
 end
