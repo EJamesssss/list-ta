@@ -5,20 +5,28 @@ class TasksController < ApplicationController
   # GET /tasks
   def index
     @tasks = current_user.tasks
-    @urgents  = @tasks.where(["date >= ? AND date <= ?", Date.current, Date.current + 1])
+    @urgents  = get_urgents
   end
 
   # GET /tasks/1
   def show
+    @back_url = prev_url
+  end
+
+  def urgent_list
+    @tasks = current_user.tasks
+    @urgents  = get_urgents
   end
 
   # GET /tasks/new
   def new
     @task = Task.new
+    @back_url = prev_url
   end
 
   # GET /tasks/1/edit
   def edit
+    @back_url = prev_url
   end
 
   # POST /tasks
@@ -57,5 +65,14 @@ class TasksController < ApplicationController
     # Only allow a list of trusted parameters through.
     def task_params
       params.require(:task).permit(:task_name, :task_details, :date, :category_id)
+    end
+
+    def get_urgents
+      # @tasks.where(["date >= ? AND date <= ?", Date.current, Date.current + 1])
+      @tasks.where(["date = ?", Date.current])
+    end
+
+    def prev_url
+      session[:my_previous_url] = URI(request.referer || '').path
     end
 end

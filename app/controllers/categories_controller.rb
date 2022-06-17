@@ -14,7 +14,7 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   def new
     @category = current_user.categories.build
-    @back_url = session[:my_previous_url] = URI(request.referer || '').path
+    @back_url = prev_url
   end
 
   # GET /categories/1/edit
@@ -60,5 +60,8 @@ class CategoriesController < ApplicationController
       params.require(:category).permit(:category_title, :category_details, :user_id)
     end
 
+    def prev_url
+        session[:my_previous_url] = URI(request.referer || '').path
+    end
 
 end

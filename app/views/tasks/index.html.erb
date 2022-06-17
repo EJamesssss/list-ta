@@ -1,14 +1,13 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Tasks</h1>
 
-<% @urgents.each do |urgent|%>
-  <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-    Your task <strong><%= urgent.task_name%></strong> is due today, click <%= link_to "here", urgent%> to view details.
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
+<% if @urgents.count >= 1%>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+  You have <strong><%= @urgents.count%></strong> <%= @urgents.count > 1 ? "tasks" : "task"%> due today, click <%= link_to "here", tasks_urgent_list_url%> to view details.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
 <%end%>
+
 <%= link_to 'New Task', new_task_path, class: "btn btn-outline-primary float-end mb-2" %>
 
 <div class="table-box">
