@@ -1,16 +1,24 @@
-<div class="container ">
+<div class="box ">
   <div class="card text-center">
     <div class="card-header">
-      Category
+      <%= link_to 'New Category', new_category_path, class: "btn btn-outline-primary float-end" %>
     </div>
     <div class="card-body">
-      <h5 class="card-title"><%= @category.category_title %></h5>
-      <p class="card-text"><%= @category.category_details %></p>
-      <%= link_to ' Edit', edit_category_path(@category), class: "btn btn-info me-md-2 fa-regular fa-pen-to-square" %> |
-      <%= link_to ' Back', categories_path, class: "btn btn-secondary me-md-2 fa-solid fa-arrow-left" %>
+      <p>Category Name</p>
+      <h4><%= @category.category_title %></h4>
+
+      <p>Category details</p>
+      <h4><%= @category.category_details %></h4>
+
+      <p>
+        created at
+        <%= @category.created_at.to_time.strftime('%B %e %Y at %l:%M %p') %>
+      </p>
     </div>
-    <div class="card-footer text-muted">
-      <%= @category.created_at.to_time.strftime('%B %e %Y at %l:%M %p') %>
+    <div class="card-footer">
+      <%= link_to ' New Task', new_task_path, class: "btn btn-primary bi-plus-lg space" %>
+      <%= link_to ' Edit', edit_category_path(@category), class: "btn btn-success bi-pencil-fill space" %>
+      <%= link_to ' Back', :back, class: "btn btn-danger bi-arrow-left-short space" %>
     </div>
   </div>
 </div>

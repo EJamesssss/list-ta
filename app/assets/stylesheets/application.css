@@ -1,15 +1,103 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+.navbar {
+    background-color: #333333;
+}
+
+.navbar-brand {
+    color: #FFF !important;
+    font-weight: bold;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+.navbar-expand-lg .navbar-nav .nav-link {
+    color: #FFF;
+}
+
+.dropdown-menu[data-bs-popper] {
+    right: 0 !important;
+}
+
+.btn-show {
+    background-color: #0bb8da;
+}
+
+.align-center {
+    display: flex;
+    justify-content: center;
+}
+
+.space {
+    margin: .2rem;
+}
+
+.table-box {
+    border: solid 1px #b3b3b3;
+    margin-top: 4rem;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.card {
+    width: 32rem;
+    height: 32rem !important;
+}
+
+.box {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+p {
+    margin-bottom: 0 !important;
+}
+
+h4 {
+    margin-bottom: 2rem !important;
+}
+
+.card-body {
+    margin-top: 2rem;
+}
+
+.card2 {
+    --bs-card-spacer-y: 1rem;
+    --bs-card-spacer-x: 1rem;
+    --bs-card-title-spacer-y: 0.5rem;
+    --bs-card-border-width: 1px;
+    --bs-card-border-color: var(--bs-border-color-translucent);
+    --bs-card-border-radius: 0.375rem;
+    --bs-card-box-shadow: ;
+    --bs-card-inner-border-radius: calc(0.375rem - 1px);
+    --bs-card-cap-padding-y: 0.5rem;
+    --bs-card-cap-padding-x: 1rem;
+    --bs-card-cap-bg: rgba(0, 0, 0, 0.03);
+    --bs-card-cap-color: ;
+    --bs-card-height: ;
+    --bs-card-color: ;
+    --bs-card-bg: #fff;
+    --bs-card-img-overlay-padding: 1rem;
+    --bs-card-group-margin: 0.75rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: var(--bs-card-height);
+    word-wrap: break-word;
+    background-color: var(--bs-card-bg);
+    background-clip: border-box;
+    border: var(--bs-card-border-width) solid var(--bs-card-border-color);
+    border-radius: var(--bs-card-border-radius);
+    margin-top: 2rem;
+}
+
+.row {
+    justify-content: center;
+}
+
+.form-label {
+    font-weight: bold;
+}

@@ -2,32 +2,44 @@
 
 <h1>Tasks</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Task name</th>
-      <th>Task details</th>
-      <th>Date</th>
-      <th>Category</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% @urgents.each do |urgent|%>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+    Your task <strong><%= urgent.task_name%></strong> is due today, click <%= link_to "here", urgent%> to view details.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<%end%>
+<%= link_to 'New Task', new_task_path, class: "btn btn-outline-primary float-end mb-2" %>
 
-  <tbody>
-    <% @tasks.each do |task| %>
+<div class="table-box">
+  <table class="table table-striped table-hover">
+    <thead>
       <tr>
-        <td><%= task.task_name %></td>
-        <td><%= task.task_details %></td>
-        <td><%= task.date %></td>
-        <td><%= task.category_id %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Task name</th>
+        <th>Task details</th>
+        <th>Date</th>
+        <th>Category</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody class="table-group-divider">
+      <% @tasks.each do |task| %>
+        <tr>
+          <td><%= task.task_name %></td>
+          <td><%= task.task_details %></td>
+          <td><%= task.date %></td>
+          <td><%= task.category.category_title %></td>
+          <td class="align-center">
+            <%= link_to ' Show', task, class:"btn btn-info bi-eye-fill space" %>
+            <%= link_to ' Edit', edit_task_path(task), class:"btn btn-success bi-pencil-fill space" %>
+            <%= link_to ' Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger bi-trash-fill space" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
 
 <br>
-
-<%= link_to 'New Task', new_task_path %>

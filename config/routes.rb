@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :tasks
-  # root to: "devise/sessions#new"
   devise_scope :user do
     root to: "devise/sessions#new"
   end

@@ -13,8 +13,8 @@ class CategoriesController < ApplicationController
 
   # GET /categories/new
   def new
-    # @category = Category.new
     @category = current_user.categories.build
+    @back_url = session[:my_previous_url] = URI(request.referer || '').path
   end
 
   # GET /categories/1/edit
@@ -23,7 +23,6 @@ class CategoriesController < ApplicationController
 
   # POST /categories
   def create
-    # @category = Category.new(category_params)
     @category = current_user.categories.build(category_params)
 
     if @category.save

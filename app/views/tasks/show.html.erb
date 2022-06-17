@@ -1,24 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Task name:</strong>
-  <%= @task.task_name %>
-</p>
+<div class="box"> 
+  <div class="card text-center">
+    <div class="card-header">
+      <strong><%= @task.category.category_title %></strong>
+    </div>
+    <div class="card-body">
+      <p>Task name</p>
+      <h4><%= @task.task_name %></h4>
 
-<p>
-  <strong>Task details:</strong>
-  <%= @task.task_details %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @task.date %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @task.category_id %>
-</p>
-
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+      <p>Task details</p>
+      <h4><%= @task.task_details %></h4>
+      
+      <p>Due Date</p>
+      <h4><%= @task.date %></h4>
+    </div>
+    <div class="card-footer">
+      <%= link_to ' Edit', edit_task_path(@task), class: "btn btn-success bi-pencil-fill space" %> 
+      <%= link_to ' Back', tasks_path, class: "btn btn-danger bi-arrow-left-short space" %>
+    </div>
+  </div>
+</div>

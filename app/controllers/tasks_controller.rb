@@ -1,11 +1,11 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_action :this_user, only: [:edit,:update,:destroy]
 
   # GET /tasks
   def index
     @tasks = current_user.tasks
+    @urgents  = @tasks.where(["date >= ? AND date <= ?", Date.current, Date.current + 1])
   end
 
   # GET /tasks/1
@@ -51,6 +51,7 @@ class TasksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_task
       @task = current_user.tasks.find(params[:id])
+      redirect_to tasks_path, notice: "Unauthorized user!" if @task.nil?
     end
 
     # Only allow a list of trusted parameters through.
