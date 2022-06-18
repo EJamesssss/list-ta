@@ -25,12 +25,21 @@
     </div>
   </div>
 
+  <% if task.id%>
   <div class="row my-2">
     <div class="col-lg-4">
       <%= form.label :due_date, class: "form-label" %>
       <%= date_field("task", :date) %>
     </div>
   </div>
+  <%else%>
+  <div class="row my-2">
+    <div class="col-lg-4">
+      <%= form.label :due_date, class: "form-label" %>
+      <%= date_field("task", :date, min: Date.current) %>
+    </div>
+  </div>
+  <%end%>
 
   <div class="row my-2">
     <div class="col-lg-4">

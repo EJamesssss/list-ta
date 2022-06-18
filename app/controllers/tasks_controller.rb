@@ -4,7 +4,7 @@ class TasksController < ApplicationController
 
   # GET /tasks
   def index
-    @tasks = current_user.tasks
+    @tasks = current_user.tasks.order("date ASC")
     @urgents  = get_urgents
   end
 
