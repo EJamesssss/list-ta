@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get '/tasks/urgent_list', to: 'tasks#urgent_list'
+  get '/tasks/overdue_list', to: 'tasks#overdue_list'
   resources :tasks
   devise_scope :user do
     root to: "devise/sessions#new"

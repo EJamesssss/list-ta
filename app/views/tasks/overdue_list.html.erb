@@ -1,0 +1,36 @@
+<h1>Overdue tasks</h1>
+
+<%= link_to 'New Task', new_task_path, class: "btn btn-outline-primary float-end mb-2" %>
+
+<div class="table-box">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Task name</th>
+        <th>Task details</th>
+        <th>Date</th>
+        <th>Category</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody class="table-group-divider">
+      <% @overdues.each do |overdue| %>
+        <% if overdue.date < Date.current %>
+          <tr>
+            <td><%= overdue.task_name %></td>
+            <td><%= overdue.task_details %></td>
+            <td><%= overdue.date %></td>
+            <td><%= overdue.category.category_title %></td>
+            <td><%= overdue.completed_status === true ? "Completed" : "Pending" %></td>
+            <td class="align-center">
+              <%= link_to ' Show', overdue, class:"btn btn-info bi-eye-fill space" %>
+              <%= link_to ' Edit', edit_task_path(overdue), class:"btn btn-success bi-pencil-fill space" %>
+              <%= link_to ' Destroy', overdue, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger bi-trash-fill space" %>
+            </td>
+          </tr>
+        <%end%>
+      <% end %>
+    </tbody>
+  </table>
+</div>

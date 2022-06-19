@@ -3,7 +3,7 @@
 <% if @urgents.count >= 1%>
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
   <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
-  You have <strong><%= @urgents.count%></strong> <%= @urgents.count > 1 ? "tasks" : "task"%> due today, click <%= link_to "here", tasks_urgent_list_url%> to view details.
+  You have <strong><%= @today.count%></strong> <%= @today.count > 1 ? "tasks" : "task"%> due <%= link_to "today", tasks_urgent_list_url%> and <%= @over.count%></strong> overdue <%= @over.count > 1 ? "tasks" : "task"%> that needs <%= link_to "attention.", tasks_overdue_list_url%>
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 <%end%>

@@ -10,23 +10,27 @@
         <th>Task details</th>
         <th>Date</th>
         <th>Category</th>
+        <th>Status</th>
         <th colspan="3"></th>
       </tr>
     </thead>
 
     <tbody class="table-group-divider">
       <% @urgents.each do |urgent| %>
-        <tr>
-          <td><%= urgent.task_name %></td>
-          <td><%= urgent.task_details %></td>
-          <td><%= urgent.date %></td>
-          <td><%= urgent.category.category_title %></td>
-          <td class="align-center">
-            <%= link_to ' Show', urgent, class:"btn btn-info bi-eye-fill space" %>
-            <%= link_to ' Edit', edit_task_path(urgent), class:"btn btn-success bi-pencil-fill space" %>
-            <%= link_to ' Destroy', urgent, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger bi-trash-fill space" %>
-          </td>
-        </tr>
+        <% if urgent.date === Date.current%>
+          <tr>
+            <td><%= urgent.task_name %></td>
+            <td><%= urgent.task_details %></td>
+            <td><%= urgent.date %></td>
+            <td><%= urgent.category.category_title %></td>
+            <td><%= urgent.completed_status === true ? "Completed" : "Pending" %></td>
+            <td class="align-center">
+              <%= link_to ' Show', urgent, class:"btn btn-info bi-eye-fill space" %>
+              <%= link_to ' Edit', edit_task_path(urgent), class:"btn btn-success bi-pencil-fill space" %>
+              <%= link_to ' Destroy', urgent, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger bi-trash-fill space" %>
+            </td>
+          </tr>
+        <%end%>
       <% end %>
     </tbody>
   </table>

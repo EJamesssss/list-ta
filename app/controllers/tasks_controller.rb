@@ -6,6 +6,8 @@ class TasksController < ApplicationController
   def index
     @tasks = current_user.tasks.order("date ASC")
     @urgents  = get_urgents
+    @today = @urgents.where("date = ?", Date.current)
+    @over = @urgents.where("date < ?", Date.current)
   end
 
   # GET /tasks/1
@@ -16,6 +18,11 @@ class TasksController < ApplicationController
   def urgent_list
     @tasks = current_user.tasks
     @urgents  = get_urgents
+  end
+
+  def overdue_list
+    @tasks = current_user.tasks
+    @overdues  = get_urgents
   end
 
   # GET /tasks/new
@@ -69,7 +76,7 @@ class TasksController < ApplicationController
 
     def get_urgents
       # @tasks.where(["date >= ? AND date <= ?", Date.current, Date.current + 1])
-      @tasks.where(["date = ?", Date.current])
+      @tasks.where(["date <= ? AND completed_status = ?", Date.current, false])
     end
 
     def prev_url
