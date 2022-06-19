@@ -49,6 +49,22 @@
     </div>
   </div>
 
+  <%if task.id%>
+    <div class="row my-2">
+      <div class="col-lg-4">
+        <%= form.check_box :completed_status, class:"form-check-input" %> 
+        <%= form.label :completed, class:"form-check-label" %>
+      </div>
+    </div>
+  <%else%>
+    <div class="row my-2" style="display:none">
+      <div class="col-lg-4">
+        <%= form.check_box :completed_status, class:"form-check-input" %> 
+        <%= form.label :completed, class:"form-check-label" %>
+      </div>
+    </div>
+  <%end%>
+
   <div class="actions">
     <%= form.submit class: 'btn btn-success' %>
   </div>

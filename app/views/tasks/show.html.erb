@@ -14,6 +14,9 @@
       
       <p>Due Date</p>
       <h4><%= @task.date %></h4>
+
+      <p>Status</p>
+      <h4><%= @task.completed_status === true ? "Completed" : "Pending" %></h4>
     </div>
     <div class="card-footer">
       <%= link_to ' Edit', edit_task_path(@task), class: "btn btn-success bi-pencil-fill space" %> 
