@@ -1,27 +1,13 @@
-<div class="login-dark" style="height: 695px;"> 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="illustration"><i class="fa-solid fa-user-lock"></i></div>
-    <h2 class="sr-only">Log in</h2>
-    <div class="field form-group">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email"%>
-    </div>
+<div class="main">
+  <p class="sign" align="center">Sign in</p>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form1"}) do |f| %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "un ", placeholder: "Email"%>
+    <%= f.password_field :password, autocomplete: "current-password", class: "pass", style: "margin-bottom: 27px", placeholder: "Password" %>
 
-    <div class="field form-group">
-      <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Password" %>
-    </div>
+    <%= f.submit "Log in", class: "submit" %>
 
-    <% if devise_mapping.rememberable? %>
-      <div class="field form-group">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
-      </div>
-    <% end %>
-
-    <div class="actions">
-      <%= f.submit "Log in", class: "btn btn-primary btn-bloc" %>
-    </div>
-    <%= render "devise/shared/links" %>
+    <p class="forgot" align="center">
+      <%= render "devise/shared/links" %>
+    </p>
   <% end %>
-
-  
 </div>

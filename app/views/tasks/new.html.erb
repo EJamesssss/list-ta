@@ -1,5 +1,12 @@
-<h1>New Task</h1>
 
-<%= render 'form', task: @task %>
-
-<%= link_to 'Back', @back_url %>
+<div class="card2 text-center">
+    <div class="card-header">
+        <h3>New Task</h3>
+    </div>
+    <div class="card-body">
+        <%= render 'form', task: @task %>
+    </div>
+    <div class="card-footer">
+        <%= link_to 'Back', @back_url, class: "btn btn-danger bi-arrow-left-short space" %>
+    </div>
+</div>
