@@ -41,9 +41,6 @@ group :development do
   # gem 'rack-mini-profiler', '~> 2.0'
 end
 
-group :production do
-  gem 'pg', '~> 1.1'
-end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
@@ -57,3 +54,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'net-smtp', require: false
 gem 'devise', '~> 4.8', '>= 4.8.1'
+gem 'net-pop', '~> 0.1.1', require: false
