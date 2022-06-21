@@ -41,6 +41,9 @@ group :development do
   # gem 'rack-mini-profiler', '~> 2.0'
 end
 
+# group :development do
+# end
+
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
