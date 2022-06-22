@@ -75,7 +75,6 @@ class TasksController < ApplicationController
     end
 
     def get_urgents
-      # @tasks.where(["date >= ? AND date <= ?", Date.current, Date.current + 1])
       @tasks.where(["date <= ? AND completed_status = ?", Date.current, false])
     end
 
